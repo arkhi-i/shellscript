@@ -4,7 +4,6 @@
 dbサーバはSQLiteを利用
 
 1.  sqliteをインストールする
-
 ```
 # yum install sqlite
 ```
