@@ -56,3 +56,61 @@ $ ln -s test.txt symbolic-link.txt
 test.txt
 symbolic-link.txt -> test.txt
 ```
+
+## プロセス管理
+
+- プロセス管理
+
+./(シェルスクリプトファイル)を実行するとbashの中で子プロセス(bash)が呼ばれスクリプトが実行される
+
+  ![bashプロセス](../img/process.jpg)
+
+
+## シェル変数と環境変数
+
+### 各変数の違い<br>
+
+シェル変数: 利用中のシェルの中だけで利用可能 <br>
+環境変数: シェルの中で立ち上げられた子プロセス(実行されるシェルスクリプト)でもコピーされて利用可能
+
+  ![変数](../img/variable.jpg)
+
+
+### 設定方法
+
+- シェル変数
+
+```
+例: $ name="Taro"
+※unsetコマンドで削除できる
+```
+
+- 環境変数
+
+```
+例1: シェル変数で定義したものを環境変数に変更する
+$ name="Taro"
+$ export name
+
+例2: 最初から環境変数として定義する
+$ export name="Taro"
+```
+
+- その他
+
+  - `source ./example.sh` もしくは`. ./example.sh`と実行すると親bashプロセス上で実行される
+  - printenvコマンド: `環境変数`一覧を表示
+  - envコマンド: `環境変数`を`一時的に`設定した上でシェルを実行する<br>
+    ```
+    例: $ env name="Taro" example.sh
+    ```
+  - 環境変数: $PATHについて
+    - 下記のような一覧が表示される。そのディレクトリ内にスクリプトを作成しておけば、絶対パスで指定しなくても実行可能
+    ```
+    /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:〜
+    ```
+
+    - 新規PATHを追加する事も可能
+    ```
+    PATH:$PATH="〜"
+    ```
